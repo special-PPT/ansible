@@ -1,0 +1,18 @@
+---
+# it is a test for push to the git remote repo
+- name: A playbook to install and start chrony
+  hosts: webservers
+
+  tasks:
+    - name: install httpd
+      yum:
+        name: httpd
+        state: installed
+
+    - name: start httpd service
+      service:
+        name: httpd
+        state: started
+        enabled: yes
+
+...
