@@ -1,0 +1,18 @@
+---
+
+- name: A playbook to install and start chrony
+  hosts: webservers
+
+  tasks:
+    - name: stop chronyd service
+      service:
+        name: chronyd
+        state: stopped
+        enabled: no
+
+    - name: uninstall chronyd
+      yum:
+        name: chrony
+        state: absent
+
+...
