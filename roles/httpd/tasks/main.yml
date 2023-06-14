@@ -1,0 +1,26 @@
+---
+# tasks file for httpd
+
+
+- name: install httpd
+  yum:
+    name: httpd
+    state: installed
+
+- name: start httpd service
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+
+
+- name: reconfigure the new httpd.conf
+  template:
+    src: httpd.conf.j2
+    dest: /etc/httpd/conf/httpd.conf
+    backup: yes
+  notify:
+    - restart httpd
+
+...
+

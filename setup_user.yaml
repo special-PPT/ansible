@@ -1,0 +1,9 @@
+---
+# it is a test for push to the git remote repo
+- name: A playbook to install and start chrony
+  hosts: webservers
+
+  roles: 
+    - users
+
+...

@@ -1,0 +1,17 @@
+---
+# tasks file for users
+
+- name: Add the users
+  group:
+    name: devops
+    state: present
+
+- user:
+    name: "{{ item }}"
+    state: present
+    group: devops
+  loop:
+    - john
+    - jerade
+    - alex
+    - rena
