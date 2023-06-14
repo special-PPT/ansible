@@ -1,0 +1,25 @@
+---
+# tasks file for chrony
+
+
+- name: install chrony
+  yum:
+    name: chrony
+    state: installed
+
+- name: start chronyd service
+  service:
+    name: chronyd
+    state: started
+    enabled: yes
+
+
+- name: reconfigure the new chrony.conf
+  template:
+    src: chrony.conf.j2
+    dest: /etc/chrony.conf
+    backup: yes
+  notify: 
+    - restart chrony
+
+...

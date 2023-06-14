@@ -1,0 +1,4 @@
+---
+# vars file for chrony
+
+ntp_pool: uk.pool.ntp.org
