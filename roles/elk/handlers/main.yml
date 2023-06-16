@@ -1,0 +1,7 @@
+---
+# handlers file for elk
+- name: restart kibana
+  service:
+    name: kibana
+    state: restarted
+

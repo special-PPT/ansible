@@ -1,0 +1,13 @@
+---
+# it is a test for push to the git remote repo
+- name: A playbook to install and start chrony
+  hosts: 192.168.2.40
+  become: true
+  vars:
+    ansible_become_pass: "{{ user_ansible_passwd }}"
+
+
+  roles: 
+    - elk
+
+...

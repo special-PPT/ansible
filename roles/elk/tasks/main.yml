@@ -1,0 +1,47 @@
+---
+# tasks file for elk
+
+- name: Import elastic search key
+  ansible.builtin.rpm_key:
+    state: present
+    key: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+
+- name: copy repository files
+  copy:
+    src: "{{ item }}"
+    dest: /etc/yum.repos.d/
+  loop:
+    - elasticsearch.repo
+    - logstash.repo
+    - kibana.repo
+
+
+- name: install elk
+  yum:
+    name: "{{ item }}"
+    state: installed
+  loop:
+    - elasticsearch
+    - kibana
+    - logstash 
+
+- name: start elk service
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop:
+    - elasticsearch
+    - kibana
+    - logstash
+
+
+- name: reconfigure the new kibana.conf
+  template:
+    src: kibana.yml.j2
+    dest: /etc/kibana/kibana.yml
+    backup: yes
+  notify:
+    - restart kibana
+
+...

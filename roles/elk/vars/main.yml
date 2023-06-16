@@ -1,0 +1,4 @@
+---
+# vars file for elk
+host_ip: 192.168.2.40
+kibana_port_number: 5601
