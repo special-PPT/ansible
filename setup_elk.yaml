@@ -1,6 +1,6 @@
 ---
 # it is a test for push to the git remote repo
-- name: A playbook to install and start chrony
+- name: A playbook to install and start elk
   hosts: 192.168.2.40
   become: true
   vars:
